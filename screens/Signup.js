@@ -27,7 +27,7 @@ const Signup = () => {
 
   useEffect(() => {
     axios
-      .get("http://192.168.1.5:3000/")
+      .get("http:// 192.168.110.107:3000/")
       .then((res) => {
         console.log("Connected to backend:", res.data);
       })
@@ -70,7 +70,7 @@ const Signup = () => {
     console.log("Attempting signup with data:", userData);
 
     try {
-      const res = await axios.post("http://192.168.1.5:3000/signup", userData);
+      const res = await axios.post("http://192.168.1.2:3000/signup", userData);
       console.log(res.data);
 
       if (res.data.status === "ok") {

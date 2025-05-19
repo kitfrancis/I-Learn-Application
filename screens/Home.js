@@ -29,7 +29,7 @@ const Home = () => {
       const token = await AsyncStorage.getItem("token");
       if (!token) return;
 
-      const res = await axios.post("http://192.168.1.5:3000/userdata", {
+      const res = await axios.post("http://192.168.1.2:3000/userdata", {
         token,
       });
 
@@ -48,7 +48,7 @@ const Home = () => {
   const renderCourseItem = ({ item }) => (
     <TouchableOpacity
       style={{
-        backgroundColor: "#ffffff",
+        backgroundColor: "#4CAF50",
         flex: 1,
         margin: 20,
         paddingVertical: 20,
@@ -66,7 +66,7 @@ const Home = () => {
         style={{
           fontSize: 16,
           fontWeight: "bold",
-          color: "#4CAF50",
+          color: "#fff",
         }}
       >
         {item.name}

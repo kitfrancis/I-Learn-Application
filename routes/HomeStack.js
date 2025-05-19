@@ -157,7 +157,19 @@ const AppDrawer = ({ navigation }) => {
       <Drawer.Screen
         name="Profile"
         component={Profile}
-        options={{ drawerLabel: "Edit Profile" }}
+        options={{
+          drawerLabel: "Profile",
+          headerTitleAlign: "center",
+          headerTitleStyle: {
+            fontSize: 20,
+            fontWeight: "bold",
+            color: "white",
+          },
+          headerStyle: {
+            backgroundColor: "#4CAF50",
+            height: 100,
+          },
+        }}
       />
       <Drawer.Screen
         name="Logout"

@@ -19,7 +19,7 @@ const Login = ({ navigation }) => {
   function handleSubmit() {
     console.log(email, password);
     const userData = { email: email, password };
-    axios.post("http://192.168.1.5:3000/login", userData).then((res) => {
+    axios.post("http://192.168.1.2:3000/login", userData).then((res) => {
       console.log(res.data);
 
       if (res.data.status === "ok") {
