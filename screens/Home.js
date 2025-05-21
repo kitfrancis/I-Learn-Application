@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 
 const courses = [
   { id: "1", name: "Mathematics" },
@@ -23,13 +24,14 @@ const courses = [
 
 const Home = () => {
   const [userName, setUserName] = useState("User");
+  const navigation = useNavigation();
 
   const getData = async () => {
     try {
       const token = await AsyncStorage.getItem("token");
       if (!token) return;
 
-      const res = await axios.post("http://192.168.1.2:3000/userdata", {
+      const res = await axios.post("http://192.168.1.5:3000/userdata", {
         token,
       });
 
@@ -47,6 +49,12 @@ const Home = () => {
 
   const renderCourseItem = ({ item }) => (
     <TouchableOpacity
+      onPress={() =>
+        navigation.navigate("SubjectModules", {
+          subjectId: item.id,
+          subjectName: item.name,
+        })
+      }
       style={{
         backgroundColor: "#4CAF50",
         flex: 1,
@@ -136,6 +144,40 @@ const Home = () => {
         }}
         scrollEnabled={false}
       />
+
+      <Text
+        style={{
+          fontSize: 24,
+          fontWeight: "600",
+          marginTop: 30,
+          marginBottom: 10,
+          marginLeft: 20,
+          color: "#333",
+        }}
+      >
+        Upload
+      </Text>
+
+      <TouchableOpacity
+        style={{
+          backgroundColor: "#2196F3",
+          marginHorizontal: 20,
+          paddingVertical: 15,
+          borderRadius: 12,
+          alignItems: "center",
+          justifyContent: "center",
+          elevation: 3,
+          marginBottom: 40,
+        }}
+        onPress={() => {
+          // Placeholder action - you can navigate or open file picker here
+          alert("Upload button pressed");
+        }}
+      >
+        <Text style={{ color: "#fff", fontSize: 16, fontWeight: "bold" }}>
+          Upload Module
+        </Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 };

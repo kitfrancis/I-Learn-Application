@@ -22,7 +22,7 @@ const Profile = () => {
       if (!token) return;
 
       const res = await axios
-        .post("http://192.168.1.2:3000/userdata", {
+        .post("http://192.168.1.5:3000/userdata", {
           token: token,
         })
         .then((res) => {

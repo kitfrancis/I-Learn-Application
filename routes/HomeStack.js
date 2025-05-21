@@ -12,6 +12,7 @@ import Logout from "../screens/Logout";
 import Profile from "../screens/Profile";
 import { ImageEditor } from "react-native";
 import { CommonActions } from "@react-navigation/native";
+import SubjectModulesScreen from "../screens/SubjectModulesScreen";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -127,6 +128,13 @@ const HomeStack = () => {
           },
         }}
       />
+
+      <Stack.Screen
+        name="SubjectModules"
+        component={SubjectModulesScreen}
+        options={({ route }) => ({ title: route.params.subjectName })}
+      />
+
       <Stack.Screen
         name="Allset"
         component={Allset}
@@ -158,7 +166,7 @@ const AppDrawer = ({ navigation }) => {
         name="Profile"
         component={Profile}
         options={{
-          drawerLabel: "Profile",
+          drawerLabel: "My Profile",
           headerTitleAlign: "center",
           headerTitleStyle: {
             fontSize: 20,
